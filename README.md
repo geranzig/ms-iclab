@@ -1,4 +1,4 @@
-# Getting Started
+# Getting Started v1.0
 
 ## Windows
 
