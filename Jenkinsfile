@@ -1,14 +1,25 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.8.1-adoptopenjdk-11' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
+    agent any
     stages {
-        stage('Build') { 
+        stage('Compilación') {
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+	     git branch: 'feature-estado-pais', url: 'https://github.com/geranzig/ms-iclab.git'
+                sh './mvnw clean compile -e'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './mvnw clean test -e'
+            }
+        }
+        stage('Jar Code') {
+            steps {
+                sh './mvnw clean package -e'
+            }
+        }
+        stage('Run Jar') {
+            steps {
+                sh 'nohup bash mvnw spring-boot:run &'
             }
         }
     }
