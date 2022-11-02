@@ -7,6 +7,7 @@ RUN mvn package
 
 FROM adoptopenjdk/openjdk11:alpine-jre                              
 
+
 ARG JAR_FILE=DevOpsUsach2020.jar
 
 COPY --from=maven /usr/src/app/build/${JAR_FILE} /opt/app/    
