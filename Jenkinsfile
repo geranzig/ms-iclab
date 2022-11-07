@@ -12,10 +12,10 @@ pipeline {
                 sh './mvnw clean test -e'
             }
         }
-
+ 
         stage('Sonarqube') {
             environment {
-                scannerHome = tool 'SonarScanner'
+                scannerHome = tool 'SonarServer'
             }
             steps {
                 withSonarQubeEnv('sonarqube') {
@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-                
+
         stage('Jar Code') {
             steps {
                 sh './mvnw clean package -e'
