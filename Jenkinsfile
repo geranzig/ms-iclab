@@ -19,7 +19,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarServer') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.sonar.login=gcornejo -Dsonar.sonar.password=LucIFugg3.77"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.sonar.login=admin -Dsonar.sonar.password=LucIFugg3.77"
               }
                 timeout(time: 10, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
