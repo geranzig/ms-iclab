@@ -19,7 +19,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarServer') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.sonar.login=3485ddcb5ff494defb182f6b0d5a826b2781321c"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.sonar.login=4d6d1f8fd9e42c36736574e77e5a0f4a8cfe1146"
               }
                 timeout(time: 10, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
